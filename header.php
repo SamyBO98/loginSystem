@@ -10,6 +10,9 @@
 
     <header>
         <nav>
+            <a href="#">
+            <img src="img/logo.png" alt="logo" class="logo">
+            </a>
             <div class="login-page">
                 <div class="form">
                     <form action="includes/login.inc.php" method="post" class="login-form">

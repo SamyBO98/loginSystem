@@ -117,5 +117,12 @@ p2{
     top: 0.5px;
 }
 
+.logo{
+    position: absolute;
+    top : 0ps;
+    width: 20%;
+    height: auto;
+}
+
 
 
