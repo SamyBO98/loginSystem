@@ -16,7 +16,7 @@
             <div class="login-page">
                 <div class="form">
                     <form action="includes/login.inc.php" method="post" class="login-form">
-                        <input type="text" name="mailuid" placeholder="Email"/>
+                        <input type="text" name="mailuid" placeholder="Email/Username"/>
                         <input type="password" name="pwd" placeholder="Password"/>
                         <button type="submit" name="login-submit" >Login</button>
                         <p class="message">Not registered? <a href="signup.php">Create an account</a></p>
