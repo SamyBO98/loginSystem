@@ -10,7 +10,7 @@
 
     <header>
         <nav>
-            <a href="#">
+            <a href="index.php">
             <img src="img/logo.png" alt="logo" class="logo">
             </a>
             <div class="login-page">

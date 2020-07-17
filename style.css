@@ -114,7 +114,7 @@ p2{
     right: 0;
     margin: 0 auto;
     max-width: 150px;
-    top: 0.5px;
+    top: 10px;
 }
 
 .logo{
@@ -122,6 +122,16 @@ p2{
     top : 0ps;
     width: 20%;
     height: auto;
+}
+
+h1{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 150px;
+    top: 10px;
+
 }
 
 
