@@ -24,6 +24,7 @@
                             echo ' <form action="includes/logout.inc.php" method="post" class="login-form">
                             <button type="submit" name="logout-submit">Logout</button>
                             </form>';
+                            
                           }
                         else{
                             echo  '<form action="includes/login.inc.php" method="post" class="login-form">
@@ -31,6 +32,7 @@
                             <input type="password" name="pwd" placeholder="Password"/>
                             <button type="submit" name="login-submit" >Login</button>
                             <p class="message">Not registered? <a href="signup.php">Create an account</a></p>
+                            <p class="message">Forgot Password? <a href="signup.php">Reset Password</a></p>
                             </form>';
                           }   
                     ?>

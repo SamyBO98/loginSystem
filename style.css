@@ -8,12 +8,10 @@
 .form {
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 .form input {
   font-family: "Roboto", sans-serif;
@@ -36,8 +34,6 @@
   padding: 15px;
   color: #FFFFFF;
   font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
@@ -45,11 +41,10 @@
 }
 .form .message {
   margin: 15px 0 0;
-  color: #b3b3b3;
   font-size: 12px;
 }
 .form .message a {
-  color: #4CAF50;
+  color: blue;
   text-decoration: none;
 }
 .form .register-form {
@@ -101,16 +96,16 @@ body {
 
 p1{
     position: absolute;
-    left: 0;
+    left: 1200;
     right: 0;
     margin: 0 auto;
     max-width: 150px;
-    top : 50px;
+    top : 10px;
 }
 
 p2{
     position: absolute;
-    left: 0;
+    left: 1200;
     right: 0;
     margin: 0 auto;
     max-width: 150px;
