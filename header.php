@@ -17,8 +17,7 @@
             <a href="index.php">
             <img src="img/logo.png" alt="logo" class="logo">
             </a>
-            <div class="login-page">
-                <div class="form">
+            <div class="logout">
                     <?php
                         if(isset($_SESSION['userId'])){
                             echo ' <form action="includes/logout.inc.php" method="post" class="login-form">
@@ -26,7 +25,12 @@
                             </form>';
                             
                           }
-                        else{
+                    ?>
+            </div>
+              <div class="login-page">
+                <div class="form">                  
+                    <?php
+                        if(!isset($_SESSION['userId'])) {
                             echo  '<form action="includes/login.inc.php" method="post" class="login-form">
                             <input type="text" name="mailuid" placeholder="Email/Username"/>
                             <input type="password" name="pwd" placeholder="Password"/>
