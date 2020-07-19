@@ -29,7 +29,7 @@
             }
             if(isset($_GET['signup'])){
             if($_GET['signup'] == "success"){
-                    echo "<script>alert(\"Enregistrer \")</script>";
+                    echo "<script>alert(\"Validation de votre inscription. Veuillez retourner à l'accueil pour vous connecter \")</script>";
                 }
             }
             
