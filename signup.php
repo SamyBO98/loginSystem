@@ -10,8 +10,20 @@
                 if($_GET['error'] == "emptyfields"){
                     echo "<script>alert(\"Veuillez remplir tout les champs \")</script>";
                 }
-                else if($_GET['error'] == "invalidmailuid"){
+                else if($_GET['error'] == "invalidmail"){
                     echo "<script>alert(\"Mail invalide \")</script>";
+                }
+                else if($_GET['error'] == "invaliduid"){
+                    echo "<script>alert(\"Pseudo invalide \")</script>";
+                }
+                else if($_GET['error'] == "invalidmailuid"){
+                    echo "<script>alert(\"Pseudo et email invalide \")</script>";
+                }
+                else if($_GET['error'] == "passwordcheck"){
+                    echo "<script>alert(\"Veuillez saisir 2 fois le même mot de passe \")</script>";
+                }
+                else if($_GET['error'] == "userOrMailAlreadytaken"){
+                    echo "<script>alert(\"Mail ou pseudo déja pris \")</script>";
                 }
                 // Refaire des else if pour tout les messages d'erreurs
             }
