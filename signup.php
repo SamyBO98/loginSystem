@@ -38,7 +38,7 @@
                     $resultCheck = mysqli_num_rows($result);
                     if($resultCheck>0){
                         while($row = mysqli_fetch_assoc($result)){
-                             $test = $row['code'];
+                             $finalResult = $row['code'];
                         }
                     }
                     $mailToSend= $_GET['email'];
@@ -57,10 +57,10 @@
                     $mail->isHTML(true); // Paramétrer le format des emails en HTML ou non
 
                     $mail->Subject = 'Code de confirmation';
-                    $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier '.$test;
+                    $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier '.$finalResult;
                     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
                     $mail->send();
-                    //header('Refresh: 4; url= verifyPassword.php');
+                    header('Refresh: 4; url= verifyPassword.php');
                     
                     //$mail->SMTPDebug = 1;
                     
