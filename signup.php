@@ -6,6 +6,9 @@
     </a>
         <h1>Sign Up</h1>
         <?php
+        
+            require 'PHPMailer/PHPMailerAutoload.php';
+            require 'includes/dbh.inc.php';
             if(isset($_GET['error'])){
                 if($_GET['error'] == "emptyfields"){
                     echo "<script>alert(\"Veuillez remplir tout les champs \")</script>";
@@ -29,7 +32,29 @@
             }
             if(isset($_GET['signup'])){
             if($_GET['signup'] == "success"){
-                    echo "<script>alert(\"Validation de votre inscription. Veuillez retourner à l'accueil pour vous connecter \")</script>";
+                    echo "Validation de votre inscription. Veuillez un mail vient de vous être envoyé";
+                    $mailToSend= $_GET['email'];
+                    $mail = new PHPmailer();
+                    $mail->isSMTP(); // Paramétrer le Mailer pour utiliser SMTP 
+                    $mail->Host = 'smtp.gmail.com'; // Spécifier le serveur SMTP
+                    $mail->SMTPAuth = true; // Activer authentication SMTP
+                    $mail->Username = 'samy691600@gmail.com'; // Votre adresse email d'envoi
+                    $mail->Password = 'azerty1998'; // Le mot de passe de cette adresse email
+                    $mail->SMTPSecure = 'ssl'; // Accepter SSL
+                    $mail->Port = 465;
+
+                    $mail->setFrom('from@example.com', 'Confirmation du compte'); // Personnalisation de l'envoyeur
+                    $mail->addAddress($mailToSend); 
+
+                    $mail->isHTML(true); // Paramétrer le format des emails en HTML ou non
+
+                    $mail->Subject = 'Here is the subject';
+                    $mail->Body = 'This is the HTML message body';
+                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                    $mail->send();
+                    
+                    //$mail->SMTPDebug = 1;
+                    
                 }
             }
             
@@ -48,7 +73,6 @@
 </main>           
 
 <?php
-
 require "footer.php"
 
 ?>
