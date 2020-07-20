@@ -32,7 +32,15 @@
             }
             if(isset($_GET['signup'])){
             if($_GET['signup'] == "success"){
-                    echo "Validation de votre inscription. Veuillez un mail vient de vous être envoyé";
+                    echo "Validation de votre inscription. Un mail vient de vous être envoyé";
+                    $sql = "SELECT code FROM users ORDER BY code DESC LIMIT 1;";
+                    $result = mysqli_query($conn,$sql);
+                    $resultCheck = mysqli_num_rows($result);
+                    if($resultCheck>0){
+                        while($row = mysqli_fetch_assoc($result)){
+                             $test = $row['code'];
+                        }
+                    }
                     $mailToSend= $_GET['email'];
                     $mail = new PHPmailer();
                     $mail->isSMTP(); // Paramétrer le Mailer pour utiliser SMTP 
@@ -48,10 +56,11 @@
 
                     $mail->isHTML(true); // Paramétrer le format des emails en HTML ou non
 
-                    $mail->Subject = 'Here is the subject';
-                    $mail->Body = 'This is the HTML message body';
+                    $mail->Subject = 'Code de confirmation';
+                    $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier '.$test;
                     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
                     $mail->send();
+                    //header('Refresh: 4; url= verifyPassword.php');
                     
                     //$mail->SMTPDebug = 1;
                     

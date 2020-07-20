@@ -23,7 +23,6 @@
                             echo ' <form action="includes/logout.inc.php" method="post" class="login-form">
                             <button type="submit" name="logout-submit">Logout</button>
                             </form>';
-                            
                           }
                     ?>
             </div>
