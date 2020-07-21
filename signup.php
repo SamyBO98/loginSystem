@@ -34,15 +34,25 @@
             if($_GET['signup'] == "success"){
                     echo "Validation de votre inscription. Un mail vient de vous être envoyé";
                     $mailToSend= $_GET['email'];
-                    $sql = 'SELECT code FROM users WHERE emailUsers ="'.$mailToSend.'"';
-                    $result = mysqli_query($conn,$sql);
-                    $resultCheck = mysqli_num_rows($result);
-                    if($resultCheck>0){
-                        while($row = mysqli_fetch_assoc($result)){
-                             $finalResult = $row['code'];
-                        }
+                    $sql = "SELECT code FROM users WHERE emailUsers=?";
+                    $stmt = mysqli_stmt_init($conn);
+                    if(!mysqli_stmt_prepare($stmt, $sql)){
+                        header("Location: ../signup.php?error=sqlerror");
+                        exit();
                     }
-
+                    else{
+                        mysqli_stmt_bind_param($stmt, "s", $mailToSend);
+                        mysqli_stmt_execute($stmt);
+                        $result = mysqli_stmt_get_result($stmt);
+                        mysqli_stmt_bind_result($stmt,$result);
+                        $resultCheck = mysqli_num_rows($result);
+                        if($resultCheck>0){
+                            while($row = mysqli_fetch_assoc($result)){
+                                 $finalResult = $row['code'];
+                            }
+                        }
+    
+                    }
 
                     $mail = new PHPmailer();
                     $mail->isSMTP(); // Paramétrer le Mailer pour utiliser SMTP 
