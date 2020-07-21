@@ -14,21 +14,32 @@ require 'includes/dbh.inc.php';
 
 <?php
 if(isset($_POST['verif-submit'])){
-$verif = $_POST['verifPassWord'];
-$sql = "SELECT code FROM users ORDER BY code DESC LIMIT 1;";
-$result = mysqli_query($conn,$sql);
-$resultCheck = mysqli_num_rows($result);
-if($resultCheck>0){
-    while($row = mysqli_fetch_assoc($result)){
-        $finalResult = $row['code'];
-        if($finalResult == $verif){
-            echo 'code bon';
+    $verif = $_POST['verifPassWord'];
+    $mailToSend= $_GET['verify'];
+    $sql = "SELECT code FROM users WHERE emailUsers=?";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("Location: ../verifyPassword.php?error=sqlerror");
+        exit();
+    }
+    else{
+        mysqli_stmt_bind_param($stmt,"s",$mailToSend);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        mysqli_stmt_bind_result($stmt,$result);
+        $resultCheck = mysqli_num_rows($result);
+        if($resultCheck>0){
+            while($row = mysqli_fetch_assoc($result)){
+                $finalResult = $row['code'];
+                if($finalResult == $verif){
+                    echo 'code bon';
+                }
+                else{
+                    echo 'code mauvais';
+                }
+            }
         }
-        else {
-            echo 'code mauvais';
-        }
-
-}
+    
 }
 }
 

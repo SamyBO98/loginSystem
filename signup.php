@@ -72,7 +72,7 @@
                     $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier '.$finalResult;
                     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
                     $mail->send();
-                    //header('Refresh: 4; url= verifyPassword.php');
+                    header('Refresh: 4; url= verifyPassword.php?&verify='.$mailToSend);
                     
                     //$mail->SMTPDebug = 1;
                     
