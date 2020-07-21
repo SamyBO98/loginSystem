@@ -1,5 +1,6 @@
 <?php
 require 'includes/dbh.inc.php';
+
 ?>
 
 <link href="style.css" rel="stylesheet">
@@ -16,6 +17,9 @@ require 'includes/dbh.inc.php';
 if(isset($_POST['verif-submit'])){
     $verif = $_POST['verifPassWord'];
     $mailToSend= $_GET['verify'];
+    $codeBon = false;
+    $number = 0;
+    $countFalse = 0;
     $sql = "SELECT code FROM users WHERE emailUsers=?";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -32,12 +36,26 @@ if(isset($_POST['verif-submit'])){
             while($row = mysqli_fetch_assoc($result)){
                 $finalResult = $row['code'];
                 if($finalResult == $verif){
-                    echo 'code bon';
+                    echo 'Code bon Redirection en cours';
+                    $codeBon = true;
+                    header('Refresh: 2; url= index.php');
                 }
                 else{
-                    echo 'code mauvais';
+
                 }
             }
+        }
+        if($codeBon = true){
+            $sql = "UPDATE users SET validation = '1' where emailUsers=?";
+            if(!mysqli_stmt_prepare($stmt, $sql)){
+                header("Location: ../verifyPassword.php?error=sqlerror");
+                exit();
+            }
+            else{
+                mysqli_stmt_bind_param($stmt,"s",$mailToSend);
+                mysqli_stmt_execute($stmt);
+            }
+           
         }
     
 }
