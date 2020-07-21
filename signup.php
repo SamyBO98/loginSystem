@@ -33,7 +33,8 @@
             if(isset($_GET['signup'])){
             if($_GET['signup'] == "success"){
                     echo "Validation de votre inscription. Un mail vient de vous être envoyé";
-                    $sql = "SELECT code FROM users ORDER BY code DESC LIMIT 1;";
+                    $mailToSend= $_GET['email'];
+                    $sql = 'SELECT code FROM users WHERE emailUsers ="'.$mailToSend.'"';
                     $result = mysqli_query($conn,$sql);
                     $resultCheck = mysqli_num_rows($result);
                     if($resultCheck>0){
@@ -41,7 +42,8 @@
                              $finalResult = $row['code'];
                         }
                     }
-                    $mailToSend= $_GET['email'];
+
+
                     $mail = new PHPmailer();
                     $mail->isSMTP(); // Paramétrer le Mailer pour utiliser SMTP 
                     $mail->Host = 'smtp.gmail.com'; // Spécifier le serveur SMTP
@@ -60,7 +62,7 @@
                     $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier '.$finalResult;
                     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
                     $mail->send();
-                    header('Refresh: 4; url= verifyPassword.php');
+                    //header('Refresh: 4; url= verifyPassword.php');
                     
                     //$mail->SMTPDebug = 1;
                     
