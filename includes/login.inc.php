@@ -23,11 +23,17 @@ if(isset($_POST['login-submit'])){
             $result = mysqli_stmt_get_result($stmt);
             if($row = mysqli_fetch_assoc($result)){
                 $pwdCheck = password_verify($password, $row['pwdUsers']);
+                $finalResult = $row['validation'];
+                $emailUse = $row['emailUsers'];
+                if($finalResult == 0){
+                    header("Location: ../index.php?error=notvalidateYet&test=".$emailUse);
+                    exit();
+                }
                 if($pwdCheck == false){
                     header("Location: ../index.php?error=wrongpwd");
                     exit();
                 }
-                else if($pwdCheck == true){
+                else if($pwdCheck == true && $finalResult == 1){
                     session_start();
                     $_SESSION['userId'] = $row['idUsers'];
                     $_SESSION['userUid'] = $row['uidUsers'];
