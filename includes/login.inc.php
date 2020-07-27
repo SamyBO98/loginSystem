@@ -40,7 +40,7 @@ if(isset($_POST['login-submit'])){
                     $_SESSION['userUid'] = $row['uidUsers'];
                     // Verification d'email
                     
-                    header("Location: ../index.php?login=success");
+                    header("Location: ../index.php?login=success&mail=".$emailUse);
                     exit();
                 }
                 else{
