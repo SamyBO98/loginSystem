@@ -1,5 +1,4 @@
 <?php
-
 if(isset($_POST['login-submit'])){
     require 'dbh.inc.php';
 
@@ -35,6 +34,7 @@ if(isset($_POST['login-submit'])){
                     exit();
                 }
                 else if($pwdCheck == true && $finalResult == 1){
+                    
                     session_start();
                     $_SESSION['userId'] = $row['idUsers'];
                     $_SESSION['userUid'] = $row['uidUsers'];
