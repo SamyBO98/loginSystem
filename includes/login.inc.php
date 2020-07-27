@@ -26,7 +26,8 @@ if(isset($_POST['login-submit'])){
                 $finalResult = $row['validation'];
                 $emailUse = $row['emailUsers'];
                 if($finalResult == 0){
-                    header("Location: ../index.php?error=notvalidateYet&test=".$emailUse);
+                    header("Location: ../verifyPassword.php?notvalidateYet&verify=".$emailUse);
+                   // header('Refresh: 2; url= index.php');
                     exit();
                 }
                 if($pwdCheck == false){
