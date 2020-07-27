@@ -14,10 +14,9 @@
 
     <header>
         <nav>
-            
-            <a href="index.php">
-            <img src="img/logo.png" alt="logo" class="logo">
-            </a>
+        <a href='index.php'>
+        <img src='img/logo.png' alt='logo' class='logo'>
+        </a>
             <div class="logout">
                     <?php
                         if(isset($_SESSION['userId'])){
