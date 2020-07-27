@@ -9,7 +9,7 @@ if(isset($_POST['signup-submit'])){
     $email = $_POST['mail'];
     $password = $_POST['pwd'];
     $passwordRepeat = $_POST['pwd-repeat'];
-    $randomNumberConfirmation = rand(1000,9000);
+    $randomNumberConfirmation = rand(1000000,999999999);
 
     if(empty($username) || empty($email) || empty($password) || empty($passwordRepeat)){
         header("Location: ../signup.php?error=emptyfields&uid=".$username."&mail=".$email);
