@@ -18,7 +18,22 @@
         <img src='img/logo.png' alt='logo' class='logo'>
         </a>";
         echo '<p1>You are logged in!</p1>';
-        echo '<p3> Quizz </p3>';
+        echo '<html>
+                  <script src="notation.js"></script>
+                  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+                  <head>
+                      <body>
+                            <h1>
+    
+                            </h1>
+                      </body>
+                      <script>
+                
+                      </script>
+                  <button onclick="alertVerifProf()">Accès Prof</button>
+                  <button onclick="alertVerifEtudiant()">Accès Etudiant</button>
+                  </head>
+              </html>';
         echo '<br>';
         echo "Hello {$emailUser}";
       }
