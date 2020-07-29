@@ -56,7 +56,13 @@ session_start();
                         }
     
                     }
-
+                    $ciphering = "AES-256-CTR"; 
+                    $iv_length = openssl_cipher_iv_length($ciphering); 
+                    $options = 0; 
+                    $encryption_iv = '9453201532123687'; 
+                    $encryption_key = "MailToSendForDeleteFunction"; 
+  
+                    $encryption = openssl_encrypt($mailToSend, $ciphering,$encryption_key, $options, $encryption_iv);
                     $mail = new PHPmailer();
                     $mail->isSMTP(); // Paramétrer le Mailer pour utiliser SMTP 
                     $mail->Host = 'smtp.gmail.com'; // Spécifier le serveur SMTP
@@ -68,15 +74,12 @@ session_start();
 
                     $mail->setFrom('from@example.com', 'Confirmation du compte'); // Personnalisation de l'envoyeur
                     $mail->addAddress($mailToSend); 
-
                     $mail->isHTML(true); // Paramétrer le format des emails en HTML ou non
-
                     $mail->Subject = 'Code de confirmation';
-                    $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier '.$finalResult.' </br>Si ce n est pas vous veuillez suivre le lien suivant : <a href = "http://localhost/LoginSystem+Project/loginsystem/DeleteAccount/delete.inc.php?&mail='.$mailToSend.'"> test </a>';
+                    $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier '.$finalResult.' </br>Si ce n est pas vous veuillez suivre le lien suivant : <a href = "http://localhost/LoginSystem+Project/loginsystem/DeleteAccount/delete.inc.php?&mail='.$encryption.'"> test </a>';
                     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
                     $mail->send();
                     header('Refresh: 4; url= verifyPassword.php?&verify='.$mailToSend);
-                    $_SESSION['mail']=$mailToSend;
                     
                     //$mail->SMTPDebug = 1;
                     

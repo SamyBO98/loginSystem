@@ -2,12 +2,18 @@
 require '../includes/dbh.inc.php';
 session_start();
 $mail = $_GET['mail'];
+$ciphering = "AES-256-CTR"; 
+$iv_length = openssl_cipher_iv_length($ciphering); 
+$options = 0; 
+$decryption_iv = '9453201532123687'; 
+$decryption_key = "MailToSendForDeleteFunction";
+$decryption=openssl_decrypt ($mail, $ciphering,$decryption_key, $options, $decryption_iv);  
+
 
 
 ?>
 
 <?php
-if($mail == $_SESSION['mail']){
     echo'
     <link href="../style.css" rel="stylesheet">
     <div class="login-page">
@@ -17,12 +23,6 @@ if($mail == $_SESSION['mail']){
                     </form>
                 </div>
     </div>';
-}else{
-    echo 'Ce n est pas votre compte vous ne pouvez pas le supprimer. Veuillez patienter';
-    header('Refresh: 3; url= ../index.php');
-}
-
-
 ?>
 
 <?php
@@ -34,9 +34,11 @@ if(isset($_POST['delete-submit'])){
         exit();
         }
     else{
-        mysqli_stmt_bind_param($stmt,"s",$mail);
+        mysqli_stmt_bind_param($stmt,"s",$decryption);
         mysqli_stmt_execute($stmt);
         echo "Compte supprimé. Veuillez patienter";
+        echo '<br>';
+        echo $decryption;
         header('Refresh: 3; url= ../index.php');
     }
 }
