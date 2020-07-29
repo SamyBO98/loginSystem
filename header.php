@@ -35,7 +35,7 @@
                             <input type="password" name="pwd" placeholder="Password"/>
                             <button type="submit" name="login-submit" >Login</button>
                             <p class="message">Not registered? <a href="signup.php">Create an account</a></p>
-                            <p class="message">Forgot Password? <a href="signup.php">Reset Password</a></p>
+                            <p class="message">Forgot Password? <a href="reset-password.php">Reset Password</a></p>
                             </form>';
                           }   
                     ?>

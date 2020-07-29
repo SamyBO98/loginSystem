@@ -1,8 +1,8 @@
 <?php
 require 'includes/dbh.inc.php';
 require 'PHPMailer/PHPMailerAutoload.php';
-
 ?>
+
 <header>
 <a href="index.php">
             <img src="img/logo.png" alt="logo" class="logo">
@@ -18,6 +18,7 @@ require 'PHPMailer/PHPMailerAutoload.php';
                     </form>
                 </div>
 </div>
+
 <?php
 
 
@@ -62,7 +63,7 @@ if(isset($_POST['send-another'])){
     $mail->isHTML(true); // Paramétrer le format des emails en HTML ou non
 
     $mail->Subject = 'Code de confirmation';
-    $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier '.$finalResult;
+    $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier'.$finalResult;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     $mail->send();
 }
@@ -72,8 +73,6 @@ if(isset($_POST['verif-submit'])){
     $verif = $_POST['verifPassWord'];
     $mailToSend= $_GET['verify'];
     $codeBon = false;
-    $number = 0;
-    $countFalse = 0;
     $sql = "SELECT * FROM users WHERE emailUsers=?";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){

@@ -1,4 +1,7 @@
+<?php
+session_start();
 
+?>
 <main>
 <link href="style.css" rel="stylesheet">
     <a href="index.php">
@@ -69,10 +72,11 @@
                     $mail->isHTML(true); // Paramétrer le format des emails en HTML ou non
 
                     $mail->Subject = 'Code de confirmation';
-                    $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier '.$finalResult;
+                    $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier '.$finalResult.' </br>Si ce n est pas vous veuillez suivre le lien suivant : <a href = "http://localhost/LoginSystem+Project/loginsystem/DeleteAccount/delete.inc.php?&mail='.$mailToSend.'"> test </a>';
                     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
                     $mail->send();
                     header('Refresh: 4; url= verifyPassword.php?&verify='.$mailToSend);
+                    $_SESSION['mail']=$mailToSend;
                     
                     //$mail->SMTPDebug = 1;
                     
