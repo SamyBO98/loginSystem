@@ -1,8 +1,3 @@
-<?php
-require 'includes/dbh.inc.php';
-require 'PHPMailer/PHPMailerAutoload.php';
-
-?>
 <header>
 <a href="index.php">
             <img src="img/logo.png" alt="logo" class="logo">
