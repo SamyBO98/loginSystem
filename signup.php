@@ -76,7 +76,7 @@ session_start();
                     $mail->addAddress($mailToSend); 
                     $mail->isHTML(true); // Paramétrer le format des emails en HTML ou non
                     $mail->Subject = 'Code de confirmation';
-                    $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier '.$finalResult.' </br>Si ce n est pas vous veuillez suivre le lien suivant : <a href = "http://localhost/LoginSystem+Project/loginsystem/DeleteAccount/delete.inc.php?&mail='.$encryption.'"> test </a>';
+                    $mail->Body = 'Veuillez rentrer le code suivant pour vous identifier '.$finalResult.' </br>Si ce n est pas vous veuillez suivre le lien suivant : <a href = "http://localhost/LoginSystem+Project/loginsystem/DeleteAccount/delete.inc.php?&mail='.$encryption.'"> Lien pour supprimer son compte </a>';
                     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
                     $mail->send();
                     header('Refresh: 4; url= verifyPassword.php?&verify='.$mailToSend);

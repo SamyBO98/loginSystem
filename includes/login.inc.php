@@ -24,7 +24,7 @@ if(isset($_POST['login-submit'])){
                 $pwdCheck = password_verify($password, $row['pwdUsers']);
                 $finalResult = $row['validation'];
                 $emailUse = $row['emailUsers'];
-                if($finalResult == 0){
+                if($finalResult == 0 && $pwdCheck == 1){
                     header("Location: ../verifyPassword.php?notvalidateYet&verify=".$emailUse);
                    // header('Refresh: 2; url= index.php');
                     exit();
