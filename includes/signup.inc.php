@@ -2,8 +2,8 @@
 
 if(isset($_POST['signup-submit'])){
 
-    require 'dbh.inc.php';
-    require '../verifyPassword.php';
+    require($_SERVER['DOCUMENT_ROOT']."/LoginSystem+Project/loginsystem/includes/dbh.inc.php");
+    require($_SERVER['DOCUMENT_ROOT']."/LoginSystem+Project/loginsystem/verifyPassword.php");
 
     $username = $_POST['uid'];
     $email = $_POST['mail'];

@@ -1,6 +1,6 @@
 <?php
-require 'includes/dbh.inc.php';
-require 'PHPMailer/PHPMailerAutoload.php';
+require($_SERVER['DOCUMENT_ROOT']."/LoginSystem+Project/loginsystem/includes/dbh.inc.php");
+require($_SERVER['DOCUMENT_ROOT']."/LoginSystem+Project/loginsystem/PHPMailer/PHPMailerAutoload.php");
 ?>
 
 <header>

@@ -1,5 +1,5 @@
 <?php
-  require 'header.php';
+  require($_SERVER['DOCUMENT_ROOT']."/LoginSystem+Project/loginsystem/header.php");
 ?>
 
     <main>

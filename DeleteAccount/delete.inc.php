@@ -1,5 +1,5 @@
 <?php
-require '../includes/dbh.inc.php';
+require($_SERVER['DOCUMENT_ROOT']."/LoginSystem+Project/loginsystem/includes/dbh.inc.php");
 session_start();
 $mail = $_GET['mail'];
 $ciphering = "AES-256-CTR"; 
