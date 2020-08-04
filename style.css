@@ -156,5 +156,47 @@ h1{
 }
 
 
+.loginChoice {
+position: absolute;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+top:300px;
+text-align: center;
+z-index: 1;
+max-width: 360px;
+margin: 0 auto 100px;
+padding: 45px;
+}
+
+.loginChoice button{
+
+font-family: "Roboto", sans-serif;
+text-transform: uppercase;
+outline: 0;
+background: #4CAF50;
+width: 100%;
+border: 0;
+padding: 15px;
+color: #FFFFFF;
+font-size: 14px;
+cursor: pointer;
+box-shadow: 3px 3px green;
+  
+}
+
+p3{
+  position: absolute;
+  left: 0px;
+  margin: 0 auto;
+  top: 130px;
+}
+
+.loginChoice button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+
+
 
 

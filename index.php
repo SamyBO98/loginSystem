@@ -2,12 +2,14 @@
   require($_SERVER['DOCUMENT_ROOT']."/LoginSystem+Project/loginsystem/header.php");
 ?>
 
+
     <main>
       <?php
     
 
       if(isset($_SESSION['userId'])){
         $emailUser = $_GET['mail'];
+        
 
         if(!isset($_SERVER['HTTP_REFERER'])){
           session_destroy();
@@ -19,23 +21,17 @@
         </a>";
         echo '<p1>You are logged in!</p1>';
         echo '<html>
-                  <script src="notation.js"></script>
+        <link href="style.css" rel="stylesheet">
+          <div class="loginChoice">
                   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                   <head>
-                      <body>
-                            <h1>
-    
-                            </h1>
-                      </body>
-                      <script>
-                
-                      </script>
                   <button onclick="alertVerifProf()">Accès Prof</button>
                   <button onclick="alertVerifEtudiant()">Accès Etudiant</button>
                   </head>
+          </div>        
               </html>';
         echo '<br>';
-        echo "Hello {$emailUser}";
+        echo "<p3>Hello {$emailUser}</p3>";
       }
       else{
         echo  '<p2>You are logged out!</p2>';
@@ -50,3 +46,15 @@
 require "footer.php"
 
 ?>
+
+
+<script>
+function alertVerifProf(){
+    if(confirm("Êtes vous sûr de vouloir accéder à la partie prof ?")) parent.location = 'prof.php';
+}
+
+function alertVerifEtudiant(){
+    var user = "<?php echo $emailUser ?>";
+    if(confirm("Êtes vous sûr de vouloir accéder à la partie étudiant ?")) parent.location = 'eleve.php?mail='+user;
+}
+</script> 
