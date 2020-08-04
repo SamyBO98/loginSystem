@@ -25,8 +25,10 @@
           <div class="loginChoice">
                   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
                   <head>
-                  <button onclick="alertVerifProf()">Accès Prof</button>
-                  <button onclick="alertVerifEtudiant()">Accès Etudiant</button>
+                  <form method="POST">
+                    <button type="button" name="accesProf" onclick="alertVerifProf()">Accès Prof</button>
+                    <button type="button" name="accesEtudiant" onclick="alertVerifEtudiant()">Accès Etudiant</button>
+                  </form>  
                   </head>
           </div>        
               </html>';
