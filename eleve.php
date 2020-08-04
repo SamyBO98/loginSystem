@@ -4,16 +4,25 @@ if(!isset($_SERVER['HTTP_REFERER'])){
     header("Location: index.php");
     exit;
 }
+$emailUser = $_GET['mail'];
+
+echo "
+<style>
+img {width:20%;}
+</style>
+<a href='index.php?login=success&mail=$emailUser'>
+<img src='img/logo.png' alt='logo' class='logo'>
+</a>";
 
 ?>
 
-<html>
+<html style="background-color:#87bf67;">
     <meta charset="UTF-8">
     <head>
-        <h1>Accès Etudiant</h1>
+        <h2>Accès Etudiant</h2>
         <body>
             
-            <h2>Plaintes par mail</h2>
+            <h3>Plaintes par mail
             <ul>
                 <li><a href = "mailto:samy.ben1998@hotmail.fr">
                     BEN OTHMAN Samy (Prof de ....) Page de l'UE ....
@@ -25,8 +34,8 @@ if(!isset($_SERVER['HTTP_REFERER'])){
                     </a>
                 </li>
             </ul>
-
-            <h2>Notation des cours</h2>
+            </h3>
+            <h4>Notation des cours</h4>
             <ul>
                 <li>
                     <a href="https://perso.liris.cnrs.fr/vincent.nivoliers/lifap6/" target="_blank">Cours de Monsieur NIVOLIER Lifap6</a> 
