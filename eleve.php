@@ -46,8 +46,9 @@ img {width:20%;}
                         <input type="number" id="NoteLifap6" name="NoteLifap6"
                         min="0" max="20">
                         <button id="LIFAP6" name="LIFAP6">Envoyer</button>
-                        <button id="LIFAP6PasSuivi">Pas Suivi cette UE</button>
-                    </form>    
+                        <button id="LIFAP6PasSuivi" name="LIFAP6PasSuivi">Pas Suivi cette UE</button>
+                    </form>   
+
 
 
                 </li>
@@ -70,10 +71,14 @@ img {width:20%;}
     </head>
 </html>
 
+
 <?php
-if(isset($_POST['NoteLifap6'])){
+if(isset($_POST['LIFAP6'])){
     $noteLifap6 = $_POST['NoteLifap6'];
-    if(!empty($noteLifap6)){
+    if(empty($noteLifap6)){
+        echo '<script>
+        window.alert("Veuillez entrer une valeur")</script>';
+    } else{
         $sql = "UPDATE users SET noteLifap6 = ? WHERE emailUsers = ?";
         $stmt = mysqli_stmt_init($conn);
         if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -82,23 +87,27 @@ if(isset($_POST['NoteLifap6'])){
         }else{
             mysqli_stmt_bind_param($stmt, "is", $noteLifap6,$emailUser);
             mysqli_stmt_execute($stmt);
-            header("Location: eleve.php?mail=".$emailUser."&success=sendLifap6Value");
+            header("Location: eleve.php?mail=".$emailUser."&success=sendLifap6Value&value=".$noteLifap6);
             exit();
         }
-    }else{
-        $sql = "UPDATE users SET noteLifap6 = NULL WHERE emailUsers = ?";
-        $stmt = mysqli_stmt_init($conn);
-        if(!mysqli_stmt_prepare($stmt, $sql)){
-            header("Location: eleve.php?mail=".$emailUser."&error=sqlerror");
-            exit();
-        }else{
-            mysqli_stmt_bind_param($stmt, "s",$emailUser);
-            mysqli_stmt_execute($stmt);
-            header("Location: eleve.php?mail=".$emailUser."&success=sendLifap6Null");
-            exit();
-        }
+
     }
 
 }
+
+if(isset($_POST['LIFAP6PasSuivi'])){
+    $sql = "UPDATE users SET noteLifap6 = NULL WHERE emailUsers = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)){
+        header("Location: eleve.php?mail=".$emailUser."&error=sqlerror");
+        exit();
+    }else{
+        mysqli_stmt_bind_param($stmt, "s",$emailUser);
+        mysqli_stmt_execute($stmt);
+        header("Location: eleve.php?mail=".$emailUser."&success=sendLifap6Null");
+        exit();
+        }
+}
+
 
 ?>

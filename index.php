@@ -52,7 +52,8 @@ require "footer.php"
 
 <script>
 function alertVerifProf(){
-    if(confirm("Êtes vous sûr de vouloir accéder à la partie prof ?")) parent.location = 'prof.php';
+    var user = "<?php echo $emailUser ?>";
+    if(confirm("Êtes vous sûr de vouloir accéder à la partie prof ?")) parent.location = 'prof.php?mail='+user;
 }
 
 function alertVerifEtudiant(){
