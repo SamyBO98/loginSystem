@@ -1,4 +1,5 @@
 <?php
+require 'includes/dbh.inc.php';
 if(!isset($_SERVER['HTTP_REFERER'])){
     session_destroy();
     header("Location: index.php");
@@ -70,6 +71,34 @@ img {width:20%;}
 </html>
 
 <?php
+if(isset($_POST['NoteLifap6'])){
+    $noteLifap6 = $_POST['NoteLifap6'];
+    if(!empty($noteLifap6)){
+        $sql = "UPDATE users SET noteLifap6 = ? WHERE emailUsers = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            header("Location: eleve.php?mail=".$emailUser."&error=sqlerror");
+            exit();
+        }else{
+            mysqli_stmt_bind_param($stmt, "is", $noteLifap6,$emailUser);
+            mysqli_stmt_execute($stmt);
+            header("Location: eleve.php?mail=".$emailUser."&success=sendLifap6Value");
+            exit();
+        }
+    }else{
+        $sql = "UPDATE users SET noteLifap6 = NULL WHERE emailUsers = ?";
+        $stmt = mysqli_stmt_init($conn);
+        if(!mysqli_stmt_prepare($stmt, $sql)){
+            header("Location: eleve.php?mail=".$emailUser."&error=sqlerror");
+            exit();
+        }else{
+            mysqli_stmt_bind_param($stmt, "s",$emailUser);
+            mysqli_stmt_execute($stmt);
+            header("Location: eleve.php?mail=".$emailUser."&success=sendLifap6Null");
+            exit();
+        }
+    }
 
+}
 
 ?>
